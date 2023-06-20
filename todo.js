@@ -25,7 +25,6 @@ const logTodos = () => {
 }
 
 // Start with getting just the first item and its title property.
-
 // Then capture the ol item into a variable (getElementById)
 // createElement to make a new LI
 // createTextNode inside the li using the title property.
@@ -43,8 +42,7 @@ const populateTodos = () => {
     //these are the pieces I need to put the title in the ol
     let todoList = document.getElementById('todo-list') 
 
-    //START For-Loop
-    // To name a for-loop-counter: 1) assign start, 2) condition to stop, 3)then, increment by how many.
+    //   ***START For-Loop***: 1) assign start, 2) condition to stop, 3)then, increment by how many.
     for(let i=0; i < arrayOfTodos.length; i++) {
         
         let todoListItem = document.createElement('LI')
@@ -54,9 +52,9 @@ const populateTodos = () => {
         todoListItem.appendChild(todoText) //puts the text in the Li
         todoList.appendChild(todoListItem) //puts the li in the ol
 
+    } //   ***END For-Loop***
 
-    } //END For-Loop
-}
+} //END Function
 
 
 // const populateV2 = () => {
