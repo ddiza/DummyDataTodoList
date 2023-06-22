@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DummyToDoList</title>
 </head>
@@ -10,9 +11,24 @@
     <button onclick="fetchTodos()">Fetch Todos</button>
     <button onclick="logTodos()">Log Todos</button>
     <button onclick="populateTodos()">populate Todos</button>
+    <button onclick="clearTodos()">Clear Todos</button>
+    <br><br>
 
-    <ol id="todo-list"></ol>
-    <script src="./todo.js"></script>
+    <div>
+        <label for="num-input">Enter a number bewtween 1 and 10:</label>
+        <input type="number" name="num-input" id="num-input" min="1" max="10">
+        <button onclick="getByUser()">Get Todos by User ID</button>
+
+    </div>
+    <br>
+
+    <button onclick="showComplete()" name="complete" id="complete">Completed</button>
+    <button onclick="showIncomplete()" name="incomplete" id="incomplete">Incomplete</button>
+
+    <ol id="todo-list">
+    <!-- LIs will show here -->
+    </ol>
+    <script src="./script.js"></script>
     
 </body>
 </html>

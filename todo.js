@@ -32,40 +32,113 @@ const logTodos = () => {
 // Then append the element to the ol element.
 // Put all of that inside your populateTodos function.
 
-//***************************
+// ****The Specifications/Specs:*****
 // Now that you have one element created and showing up on the screen, 
 // put the same code inside a for loop and iterate over the length of the array. 
 // But now just change out [0] for [i]! (Refer back to your for loop lesson if needed)
 
 const populateTodos = () => {
 
-    //these are the pieces I need to put the title in the ol
-    let todoList = document.getElementById('todo-list') 
+    for(let i=0; i<arrayOfTodos.length; i++){
 
-    //   ***START For-Loop***: 1) assign start, 2) condition to stop, 3)then, increment by how many.
-    for(let i=0; i < arrayOfTodos.length; i++) {
-        
-        let todoListItem = document.createElement('LI')
-        let todoText = document.createTextNode(arrayOfTodos[i].title)
+        // Find OL by ID and put it in a variable
+        let todoList = document.getElementById("todo-list")
+      
+        // Creat LI element
+        let todoItem = document.createElement("LI")
+      
+        // Create text element for the title
+        let todoTitle =  document.createTextNode(arrayOfTodos[i].title)
+      
+        // Put LI in the OL
+        todoItem.appendChild(todoTitle)
+        todoList.appendChild(todoItem)
+      
+    }
+}   
 
-        //build the string of code
-        todoListItem.appendChild(todoText) //puts the text in the Li
-        todoList.appendChild(todoListItem) //puts the li in the ol
+const getByUser = () => {
+  
+    clearTodos()
+  
+    const numberInput = document.getElementById("num-input").valueAsNumber
+  
+    const filteredArray = arrayOfTodos.filter((arr) => arr.userId == numberInput)
+  
+    console.log(filteredArray)
+    
+    for(let i=0; i<filteredArray.length; i++){
+  
+        let todoList = document.getElementById("todo-list")
+    
+        let todoItem = document.createElement("LI")
+    
+        let todoTitle =  document.createTextNode(`User: ${filteredArray[i].userId} Title: ${filteredArray[i].title}`)
+    
+        todoItem.appendChild(todoTitle)
+        todoList.appendChild(todoItem)
+    
+        }  
+  }
 
-    } //   ***END For-Loop***
+const clearTodos = () => {
 
-} //END Function
-
-
-// const populateV2 = () => {
-
-//     let todoList2 = document.getElementById('todo-list');
-//     for (let i=0; i<arrayOfTodos.length; i++) {
-
-//         let todoListItem = document.createElement('LI');
-//         todoListItem.innerHTML = `<h3>${arrayOfTodos[i].title}</h> <p>${arrayOfTodos[i].completed}</p>`
-//         todoList.appendChild(todoListItem);
-//     }
+  let todos = document.getElementsByTagName("OL")
+ 
+  for (i=0; i < todos.length; i++) {
+      console.log(todos[i].id)
+      todos[i].innerHTML = null
+    }  
+}
 
 
-// }
+
+// ** Show Complete and Incomplete **
+
+const showComplete = () => {
+
+    clearTodos()
+  
+    const numberInput = document.getElementById("num-input").valueAsNumber
+  
+    const filteredArray = arrayOfTodos.filter((arr) => arr.userId == numberInput && arr.completed == true)
+  
+    console.log(filteredArray)
+  
+    for(let i=0; i<filteredArray.length; i++){
+  
+        let todoList = document.getElementById("todo-list")
+    
+        let todoItem = document.createElement("LI")
+    
+        let todoTitle =  document.createTextNode(`User: ${filteredArray[i].userId} Title: ${filteredArray[i].title}`)
+    
+        todoItem.appendChild(todoTitle)
+        todoList.appendChild(todoItem)
+    
+        }  
+  }
+  
+const showIncomplete = () => {
+
+  clearTodos()
+
+  const numberInput = document.getElementById("num-input").valueAsNumber
+
+  const filteredArray = arrayOfTodos.filter((arr) => arr.userId == numberInput && arr.completed == false)
+
+  console.log(filteredArray)
+
+  for(let i=0; i<filteredArray.length; i++){
+
+      let todoList = document.getElementById("todo-list")
+  
+      let todoItem = document.createElement("LI")
+  
+      let todoTitle =  document.createTextNode(`User: ${filteredArray[i].userId} Title: ${filteredArray[i].title}`)
+  
+      todoItem.appendChild(todoTitle)
+      todoList.appendChild(todoItem)
+  
+      }
+}
